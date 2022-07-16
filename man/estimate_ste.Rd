@@ -24,16 +24,17 @@ estimate_ste(
 }
 \value{
 df The same as input dataframe with the added column of the strategic treatment effect.
-#' @examples
+}
+\description{
+This function estimates the strategic treatment effect.
+}
+\examples{
 estimate_ste(
    y = df$equity_growth,
    treatment = df$treatment,
    propensity = p_scores,
    df = df
 )
-}
-\description{
-This function estimates the strategic treatment effect.
 }
 \keyword{Effect}
 \keyword{Strategic}

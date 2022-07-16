@@ -15,15 +15,24 @@ get_top_ste_determinants(ste, X, teffect)
 }
 \value{
 ste_features A dataframe containing the STE features.
-#' @examples
+}
+\description{
+This function studies the determinants of the strategic treatment effect.
+}
+\section{Dependencies}{
+
+ \describe {
+   \item{glmnet}
+   \item{dplyr}
+ }
+}
+
+\examples{
 get_top_ste_determinants(
    ste = df$ste,
    X = df[, ml_variables],
    teffect = df$teffect
 )
-}
-\description{
-This function studies the determinants of the strategic treatment effect.
 }
 \keyword{Determinants}
 \keyword{STE}

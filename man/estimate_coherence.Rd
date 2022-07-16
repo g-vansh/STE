@@ -19,11 +19,18 @@ The value of coherence.
 \description{
 This function calculates the value of coherence for a model.
 }
+\section{Dependencies}{
+
+ \describe {
+   \item{glmnet}
+ }
+}
+
 \examples{
  estimate_coherence(
    y = df$teffect,
    x = df[, ml_variables],
-   x.no_inter = df[, ml_variables[grep("^[^X]", ml_variables)]]
+   x.no_inter = df[[ml_variables[grep("^[^X]", ml_variables)]]]
    )
 }
 \keyword{Coherence}

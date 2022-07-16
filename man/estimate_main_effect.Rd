@@ -4,26 +4,38 @@
 \alias{estimate_main_effect}
 \title{Estimate Main Effect}
 \usage{
-estimate_main_effect(y, treatment, X)
+estimate_main_effect(y_var, treatment_var, X, data_df)
 }
 \arguments{
-\item{y}{y-variable for the second lasso.}
+\item{y_var}{String containing the name of the outcome variable to be studies.}
 
-\item{treatment}{Treatment to be studied.}
+\item{treatment_var}{String containing the name of treatment variable to be studied.}
 
 \item{X}{X-variables.}
+
+\item{data_df}{The complete dataframe.}
 }
 \value{
-The regression coefficients.
+The regression output from the fixed-effects OLS regression.
 }
 \description{
 This function estimates the main effect of the treatment.
 }
+\section{Dependencies}{
+
+ \describe {
+   \item{glmnet}
+   \item{stringr}
+   \item{fixest}
+ }
+}
+
 \examples{
  estimate_main_effect(
-   y = cb_startups$equity_growth,
-   treatment = cb_startups$bearly_stage_has_vc,
-   X = cb_startups[, ml_vars]
+   y_var = "outcome_var_name",
+   treatment_var = "treatment_var_name",
+   X = df[, ml_variables],
+   data_df = df
    )
 }
 \keyword{Effect}
