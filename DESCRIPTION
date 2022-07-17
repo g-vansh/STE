@@ -19,4 +19,5 @@ Imports:
     fixest,
     glmnet,
     randomForest,
-    stats
+    stats,
+    stringr

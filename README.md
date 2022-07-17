@@ -23,14 +23,14 @@ estimate the value of coherence for firms.
 You can install the development version of STE like so:
 
 ``` r
-install.packages("STE")
+devtools::install_github("g-vansh/STE")
 ```
 
 ## Package Contents
 
 This package contains 5 functions:
 
--   `STE::estimate_main_effect(y, treatment, X)`
+-   `STE::estimate_main_effect(y_var, treatment_var, X, data_df)`
 -   `STE::estimate_propensity(treatment, X)`
 -   `STE::estimate_ste(y, treatment, propensity, df)`
 -   `STE::get_top_ste_determinants(ste, X, teffect)`
@@ -49,21 +49,22 @@ library(STE)
 load("cb_startups.Rdata")
 
 # Estimate the main effect of the treatment.
-reg_coefs <- STE::estimate_main_effect(
-    y = cb_startups$equity_growth,
-    treatment = cb_startups$bearly_stage_has_vc,
-    X = cb_startups[, ml_vars]
+reg <- estimate_main_effect(
+    y_var = "equity_growth",
+    treatment_var = "bearly_stage_has_vc",
+    X = cb_startups[, ml_vars],
+    data_df = cb_startups
 )
-print(reg_coefs)
+print(summary(reg))
 
 # Estimate the propensity score of the treatment.
-p_scores <- STE::estimate_propensity(
+p_scores <- estimate_propensity(
     treatment = cb_startups$bearly_stage_has_vc,
     X = cb_startups[, ml_vars]
 )
 
 # Estimate the strategic treatment effect.
-cb_startups <- STE::estimate_ste(
+cb_startups <- estimate_ste(
     y = cb_startups$equity_growth,
     treatment = cb_startups$bearly_stage_has_vc,
     propensity = p_scores,
