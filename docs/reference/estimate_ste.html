@@ -81,14 +81,12 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">estimate_ste</span><span class="op">(</span></span></span>
-<span class="r-in"><span>   y <span class="op">=</span> <span class="va">df</span><span class="op">$</span><span class="va">equity_growth</span>,</span></span>
-<span class="r-in"><span>   treatment <span class="op">=</span> <span class="va">df</span><span class="op">$</span><span class="va">treatment</span>,</span></span>
-<span class="r-in"><span>   propensity <span class="op">=</span> <span class="va">p_scores</span>,</span></span>
-<span class="r-in"><span>   df <span class="op">=</span> <span class="va">df</span></span></span>
-<span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in estimate_ste(y = df$equity_growth, treatment = df$treatment,     propensity = p_scores, df = df):</span> object 'p_scores' not found</span>
-</code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">estimate_ste</span><span class="op">(</span></span>
+<span>   y <span class="op">=</span> <span class="va">df</span><span class="op">$</span><span class="va">equity_growth</span>,</span>
+<span>   treatment <span class="op">=</span> <span class="va">df</span><span class="op">$</span><span class="va">treatment</span>,</span>
+<span>   propensity <span class="op">=</span> <span class="va">p_scores</span>,</span>
+<span>   df <span class="op">=</span> <span class="va">df</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

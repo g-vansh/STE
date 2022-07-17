@@ -73,22 +73,10 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span> <span class="fu">estimate_propensity</span><span class="op">(</span></span></span>
-<span class="r-in"><span>   treatment <span class="op">=</span> <span class="va">df</span><span class="op">$</span><span class="va">treatment</span>,</span></span>
-<span class="r-in"><span>   X <span class="op">=</span> <span class="va">df</span><span class="op">[[</span><span class="va">ml_variables</span><span class="op">]</span><span class="op">]</span></span></span>
-<span class="r-in"><span>   <span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: randomForest</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>package ‘randomForest’ was built under R version 4.1.3</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> randomForest 4.7-1.1</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Type rfNews() to see new features/changes/bug fixes.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Attaching package: ‘randomForest’</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> The following object is masked from ‘package:dplyr’:</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>     combine</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Training the Random Forest Model."</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in nrow(df):</span> object 'ml_variables' not found</span>
-</code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span> <span class="fu">estimate_propensity</span><span class="op">(</span></span>
+<span>   treatment <span class="op">=</span> <span class="va">df</span><span class="op">$</span><span class="va">treatment</span>,</span>
+<span>   X <span class="op">=</span> <span class="va">df</span><span class="op">[[</span><span class="va">ml_variables</span><span class="op">]</span><span class="op">]</span></span>
+<span>   <span class="op">)</span></span></code></pre></div>
     </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

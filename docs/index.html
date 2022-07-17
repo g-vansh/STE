@@ -68,14 +68,14 @@
 </h2>
 <p>You can install the development version of STE like so:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"STE"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"g-vansh/STE"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="package-contents">Package Contents<a class="anchor" aria-label="anchor" href="#package-contents"></a>
 </h2>
 <p>This package contains 5 functions:</p>
 <ul>
-<li><code>STE::estimate_main_effect(y, treatment, X)</code></li>
+<li><code>STE::estimate_main_effect(y_var, treatment_var, X, data_df)</code></li>
 <li><code>STE::estimate_propensity(treatment, X)</code></li>
 <li><code>STE::estimate_ste(y, treatment, propensity, df)</code></li>
 <li><code>STE::get_top_ste_determinants(ste, X, teffect)</code></li>
@@ -94,21 +94,22 @@
 <span><span class="fu"><a href="https://rdrr.io/r/base/load.html" class="external-link">load</a></span><span class="op">(</span><span class="st">"cb_startups.Rdata"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Estimate the main effect of the treatment.</span></span>
-<span><span class="va">reg_coefs</span> <span class="op">&lt;-</span> <span class="fu">STE</span><span class="fu">::</span><span class="fu"><a href="reference/estimate_main_effect.html">estimate_main_effect</a></span><span class="op">(</span></span>
-<span>    y <span class="op">=</span> <span class="va">cb_startups</span><span class="op">$</span><span class="va">equity_growth</span>,</span>
-<span>    treatment <span class="op">=</span> <span class="va">cb_startups</span><span class="op">$</span><span class="va">bearly_stage_has_vc</span>,</span>
-<span>    X <span class="op">=</span> <span class="va">cb_startups</span><span class="op">[</span>, <span class="va">ml_vars</span><span class="op">]</span></span>
+<span><span class="va">reg</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/estimate_main_effect.html">estimate_main_effect</a></span><span class="op">(</span></span>
+<span>    y_var <span class="op">=</span> <span class="st">"equity_growth"</span>,</span>
+<span>    treatment_var <span class="op">=</span> <span class="st">"bearly_stage_has_vc"</span>,</span>
+<span>    X <span class="op">=</span> <span class="va">cb_startups</span><span class="op">[</span>, <span class="va">ml_vars</span><span class="op">]</span>,</span>
+<span>    data_df <span class="op">=</span> <span class="va">cb_startups</span></span>
 <span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">reg_coefs</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">reg</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Estimate the propensity score of the treatment.</span></span>
-<span><span class="va">p_scores</span> <span class="op">&lt;-</span> <span class="fu">STE</span><span class="fu">::</span><span class="fu"><a href="reference/estimate_propensity.html">estimate_propensity</a></span><span class="op">(</span></span>
+<span><span class="va">p_scores</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/estimate_propensity.html">estimate_propensity</a></span><span class="op">(</span></span>
 <span>    treatment <span class="op">=</span> <span class="va">cb_startups</span><span class="op">$</span><span class="va">bearly_stage_has_vc</span>,</span>
 <span>    X <span class="op">=</span> <span class="va">cb_startups</span><span class="op">[</span>, <span class="va">ml_vars</span><span class="op">]</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Estimate the strategic treatment effect.</span></span>
-<span><span class="va">cb_startups</span> <span class="op">&lt;-</span> <span class="fu">STE</span><span class="fu">::</span><span class="fu"><a href="reference/estimate_ste.html">estimate_ste</a></span><span class="op">(</span></span>
+<span><span class="va">cb_startups</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/estimate_ste.html">estimate_ste</a></span><span class="op">(</span></span>
 <span>    y <span class="op">=</span> <span class="va">cb_startups</span><span class="op">$</span><span class="va">equity_growth</span>,</span>
 <span>    treatment <span class="op">=</span> <span class="va">cb_startups</span><span class="op">$</span><span class="va">bearly_stage_has_vc</span>,</span>
 <span>    propensity <span class="op">=</span> <span class="va">p_scores</span>,</span>
@@ -144,7 +145,7 @@
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
-<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a></small></li>
+<li><small><a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>.md</small></li>
 </ul>
 </div>
 
