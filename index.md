@@ -1,37 +1,87 @@
-## Welcome to GitHub Pages
+## Strategic Treatment Effects
 
-You can use the [editor on GitHub](https://github.com/g-vansh/STE/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+The goal of STE is to allow a user to estimate and study the Strategic
+Treatment Effect of a strategic choice, as outlined by the paper:
+Guzman, Jorge, Treatment Effects in Strategic Management (September 1,
+2021). Available at SSRN: <https://ssrn.com/abstract=3915606> or
+<http://dx.doi.org/10.2139/ssrn.3915606>. <br> <br> The five functions
+in the package allow one to systematically study the strategic treatment
+effects of a strategic choice by using a Random Forest model to estimate
+the propensity score (as mentioned in the paper), which is then used to
+estimate the treatment effects as well as the strategic treatment
+effects of the strategic choice. This information is then used to
+estimate the value of coherence for firms.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Installation
 
-### Markdown
+You can install the development version of STE like so:
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+``` r
+install.packages("STE")
 ```
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+## Package Contents
 
-### Jekyll Themes
+This package contains 5 functions:
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/g-vansh/STE/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+-   `STE::estimate_main_effect(y, treatment, X)`
+-   `STE::estimate_propensity(treatment, X)`
+-   `STE::estimate_ste(y, treatment, propensity, df)`
+-   `STE::get_top_ste_determinants(ste, X, teffect)`
+-   `STE::estimate_coherence(y, x, x.no_inter)`
 
-### Support or Contact
+## Example
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+This is a basic example which shows you how to use the package in one
+scenario:
+
+``` r
+library(STE)
+## Basic Example Code:
+
+# Load cb_startups as a dataframe from cb_startups.Rdata file.
+load("cb_startups.Rdata")
+
+# Estimate the main effect of the treatment.
+reg_coefs <- STE::estimate_main_effect(
+    y = cb_startups$equity_growth,
+    treatment = cb_startups$bearly_stage_has_vc,
+    X = cb_startups[, ml_vars]
+)
+print(reg_coefs)
+
+# Estimate the propensity score of the treatment.
+p_scores <- STE::estimate_propensity(
+    treatment = cb_startups$bearly_stage_has_vc,
+    X = cb_startups[, ml_vars]
+)
+
+# Estimate the strategic treatment effect.
+cb_startups <- STE::estimate_ste(
+    y = cb_startups$equity_growth,
+    treatment = cb_startups$bearly_stage_has_vc,
+    propensity = p_scores,
+    df = cb_startups
+)
+
+# Remove NA values for analysis. 
+cb_startups.clean <- cb_startups %>%
+    filter(!is.na(ste))
+
+# Study the determinants of STE.
+ste_features <- STE::get_top_ste_determinants(
+    ste = cb_startups.clean$ste,
+    X = cb_startups.clean[, ml_vars],
+    teffect = cb_startups.clean$teffect
+    )
+View(ste_features)
+
+# Estimate the coherence value.
+ml_vars.no_inter <- ml_vars[grep("^[^X]",ml_vars)]
+coherence_value <- STE::estimate_coherence(
+    y = cb_startups.clean$teffect,
+    x = cb_startups.clean[, ml_vars],
+    x.no_inter = cb_startups.clean[, ml_vars.no_inter]
+)
+print(paste0("Coherence Value: ",coherence_value))
+```
