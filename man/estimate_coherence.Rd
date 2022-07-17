@@ -21,7 +21,7 @@ This function calculates the value of coherence for a model.
 }
 \section{Dependencies}{
 
- \describe {
+ \itemize{
    \item{glmnet}
  }
 }

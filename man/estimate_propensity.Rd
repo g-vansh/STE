@@ -19,7 +19,7 @@ This function estimates the propensity score using a RandomForest model.
 }
 \section{Dependencies}{
 
- \describe {
+ \itemize{
    \item{randomForest}
    \item{dplyr}
  }

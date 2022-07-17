@@ -21,7 +21,7 @@ This function studies the determinants of the strategic treatment effect.
 }
 \section{Dependencies}{
 
- \describe {
+ \itemize{
    \item{glmnet}
    \item{dplyr}
  }

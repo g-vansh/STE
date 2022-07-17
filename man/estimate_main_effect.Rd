@@ -23,7 +23,7 @@ This function estimates the main effect of the treatment.
 }
 \section{Dependencies}{
 
- \describe {
+ \itemize{
    \item{glmnet}
    \item{stringr}
    \item{fixest}
