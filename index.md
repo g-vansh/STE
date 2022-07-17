@@ -1,3 +1,5 @@
+[STE_0.1.0.tar.gz](https://github.com/g-vansh/STE/files/9128233/STE_0.1.0.tar.gz)
+
 ## Strategic Treatment Effects
 The goal of STE is to allow a user to estimate and study the Strategic
 Treatment Effect of a strategic choice, as outlined by the paper:
