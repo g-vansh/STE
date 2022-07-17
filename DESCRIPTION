@@ -16,5 +16,7 @@ LazyData: true
 RoxygenNote: 7.2.0
 Imports: 
     dplyr,
+    fixest,
     glmnet,
-    randomForest
+    randomForest,
+    stats

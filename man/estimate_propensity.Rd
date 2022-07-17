@@ -18,7 +18,7 @@ The propensity scores for each row in our dataset.
 This function estimates the propensity score using a RandomForest model.
 }
 \section{Dependencies}{
- 
+
  \describe {
    \item{randomForest}
    \item{dplyr}

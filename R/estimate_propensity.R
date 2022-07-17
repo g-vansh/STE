@@ -1,7 +1,7 @@
 #'@title Estimate Propensity Score
 #'@description
 #'  This function estimates the propensity score using a RandomForest model.
-#'@section Dependencies: 
+#'@section Dependencies:
 #'  \describe {
 #'    \item{randomForest}
 #'    \item{dplyr}
@@ -23,20 +23,20 @@ estimate_propensity <- function(treatment, X){
     print("Training the Random Forest Model.")
     df <- df_pre_process(X, 10)
     vars <- colnames(X)
-    
+
     # Conduct Out-Of-Fold (OOF) predictions fpr 10 folds.
     for (i in 0:9) {
         print(paste0("In Fold: ", i+1))
         train_sample <- df$fold != i
         pred_sample <- df$fold == i
-        
+
         rf <- randomForest(
           x = df[train_sample, vars],
           y = as.factor(treatment[train_sample]),
           type = "regression",
           importance = TRUE
         )
-        
+
         # Make Predictions For Fold i
         pred <- predict(rf, newdata=df[, vars], type = "prob")[,2]
         df$propensity[which(pred_sample)] <- pred[pred_sample]
