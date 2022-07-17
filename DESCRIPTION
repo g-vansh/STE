@@ -10,7 +10,7 @@ Maintainer: Jorge Guzman <jorge.guzman@columbia.edu>
 Description:
     The package allows a user to estimate and study the Strategic Treatment Effect of a strategic choice, as outlined by the paper: Guzman, Jorge, Treatment Effects in Strategic Management (September 1, 2021). Available at SSRN: https://ssrn.com/abstract=3915606 or http://dx.doi.org/10.2139/ssrn.3915606.
     The five functions in the package allow one to systematically study the strategic treatment effects of a strategic choice by using a Random Forest model to estimate the propensity score (as mentioned in the paper), which is then used to estimate the treatment effects as well as the strategic treatment effects of the strategic choice. This information is then used to estimate the value of coherence for firms.
-License: MIT + file LICENSE
+License: MIT + file LICENSE.md
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.2.0
