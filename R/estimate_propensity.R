@@ -23,7 +23,7 @@ estimate_propensity <- function(treatment, X){
     print("Training the Random Forest Model.")
     df <- df_pre_process(X, treatment, 3)
     treatment <- df$temp_treatment
-    df <- subset(df, select = -c('rown', 'temp_treatment'))
+    df <- subset(df, select = -c(rown, temp_treatment))
     vars <- colnames(X)
 
     # Conduct Out-Of-Fold (OOF) predictions for 10 folds.
