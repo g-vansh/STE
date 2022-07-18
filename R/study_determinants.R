@@ -29,7 +29,7 @@ get_top_ste_determinants <- function(ste, X, teffect) {
     lasso_ste <- cv.glmnet(
         x = data.matrix(X),
         y = teffect,
-        standardize = TRUE,
+        standardize = TRUE
     )
 
     # Get Top Features.
