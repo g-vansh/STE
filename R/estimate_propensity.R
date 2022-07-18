@@ -36,7 +36,9 @@ estimate_propensity <- function(treatment, X){
           x = df[train_sample, vars],
           y = as.factor(treatment[train_sample]),
           type = "regression",
-          importance = TRUE
+          importance = TRUE,
+          nodesize = 25,
+          maxdepth = 9
         )
 
         # Make Predictions For Fold i
