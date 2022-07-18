@@ -27,6 +27,7 @@ This function estimates the main effect of the treatment.
    \item{glmnet}
    \item{stringr}
    \item{fixest}
+   \item{dplyr}
  }
 }
 

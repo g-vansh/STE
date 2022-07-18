@@ -1,6 +1,10 @@
 #' @title Estimate the Strategic Treatment Effect.
 #' @description
 #'  This function estimates the strategic treatment effect.
+#' @section Dependencies:
+#'  \itemize{
+#'    \item{dplyr}
+#'  }
 #' @param y Outcome variable to be studied.
 #' @param treatment Treatment variable.
 #' @param propensity Propensity score generated earlier.
@@ -17,6 +21,7 @@
 #'  Strategic Treatment Effect
 #' @export
 estimate_ste <- function(y, treatment, propensity, df, span_treated = 0.75, span_untreated = 0.75) {
+    require(dplyr)
     # Setup models and variables.
     df$propensity <- propensity
     df$y <- y

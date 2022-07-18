@@ -6,6 +6,7 @@
 #'    \item{glmnet}
 #'    \item{stringr}
 #'    \item{fixest}
+#'    \item{dplyr}
 #'  }
 #'@param treatment_var String containing the name of treatment variable to be studied.
 #'@param y_var String containing the name of the outcome variable to be studies.
@@ -27,6 +28,7 @@ estimate_main_effect <- function(y_var, treatment_var, X, data_df) {
     require(glmnet)
     require(stringr)
     require(fixest)
+    require(dplyr)
     lm_formula <- paste0(y_var,"~",treatment_var)
     y <- data_df[[y_var]]
     treatment <- data_df[[treatment_var]]

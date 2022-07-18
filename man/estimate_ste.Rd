@@ -28,6 +28,13 @@ df The same as input dataframe with the added column of the strategic treatment 
 \description{
 This function estimates the strategic treatment effect.
 }
+\section{Dependencies}{
+
+ \itemize{
+   \item{dplyr}
+ }
+}
+
 \examples{
 estimate_ste(
    y = df$equity_growth,
