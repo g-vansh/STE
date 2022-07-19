@@ -55,6 +55,7 @@ estimate_propensity <- function(treatment, X){
 df_pre_process <- function(df, treatment, num_folds) {
   df$idx <- 1:nrow(df)
   df$temp_treatment <- treatment
+  set.seed(7)
   random_order <- sample(1:nrow(df))
   df <- df[random_order, ]
   df$rown <- 1:nrow(df)
