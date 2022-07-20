@@ -9,6 +9,8 @@
 #' @param treatment Treatment variable.
 #' @param propensity Propensity score generated earlier.
 #' @param df The complete dataset.
+#' @param span_treated Optional span value for the treated model. Default is 0.75, which is the loess default.
+#' @param span_untreated Optional span value for the untreated model. Default is 0.75, which is the loess default.
 #' @returns df The same as input dataframe with the added column of the strategic treatment effect.
 #' @examples
 #' estimate_ste(
