@@ -1,0 +1,12 @@
+citHeader("To cite STE in publications use:")
+
+citEntry(
+  entry    = "unpublished",
+  title    = "Treatment Effects in Strategic Management",
+  author   = "Jorge Guzman",
+  year     = 2021,
+  url      = "https://dx.doi.org/10.2139/ssrn.3915606",
+  textVersion = paste(
+    "Guzman, Jorge, Treatment Effects in Strategic Management (September 1, 2021). Available at SSRN: https://ssrn.com/abstract=3915606 or http://dx.doi.org/10.2139/ssrn.3915606"
+  )
+)
