@@ -30,6 +30,26 @@ This package contains 5 functions:
 -   `STE::get_top_ste_determinants(ste, X, teffect)`
 -   `STE::estimate_coherence(y, x, x.no_inter)`
 
+## Citation
+
+Please cite STE in publications as:
+```
+  Guzman, J., & Gupta, V., (2022). STE: Estimate Strategic Treatment Effects. R
+  Package Version 0.1.0. https://github.com/g-vansh/STE
+```
+A BibTeX entry for LaTeX users is:
+```
+  @Manual{,
+    title = {STE: Estimate Strategic Treatment Effects},
+    author = {Vansh Gupta and Jorge Guzman},
+    year = {2022},
+    note = {R Package Version 0.1.0},
+    organization = {Columbia Business School, Columbia University},
+    address = {New York, NY, USA},
+    url = {https://github.com/g-vansh/STE},
+  }
+```
+
 ## Example
 
 This is a basic example which shows you how to use the package in one
