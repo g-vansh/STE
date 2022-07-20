@@ -33,10 +33,13 @@ estimate_main_effect <- function(y_var, treatment_var, X, data_df) {
     y <- data_df[[y_var]]
     treatment <- data_df[[treatment_var]]
     vars <- colnames(X)
+    nFolds <- 3
+    set.seed(7)
+    foldid <- sample(rep(1:nFolds, length.out = nrow(X)))
 
     # Run Lassos.
-    l1 <- cv.glmnet(data.matrix(X), y = as.double(treatment))
-    l2 <- cv.glmnet(data.matrix(X), y = as.double(y))
+    l1 <- cv.glmnet(data.matrix(X), y = as.double(treatment), foldid = foldid)
+    l2 <- cv.glmnet(data.matrix(X), y = as.double(y), foldid = foldid)
 
 
     # Get the coefficients.
