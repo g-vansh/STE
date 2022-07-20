@@ -3,7 +3,7 @@ citHeader("Please cite STE in publications as:")
 citEntry(
   entry    = "Manual",
   title    = "STE: Estimate Strategic Treatment Effects",
-  author   = c(person("Vansh", "Gupta", "vg224@cornell.edu", role = c("aut"), comment = c(ORCID = "0000-0002-6221-1247")), person("Jorge", "Guzman", "jorge.guzman@columbia.edu", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-0826-8306"))),
+  author   = c(person(given = "Vansh", family = "Gupta", email = "vg224@cornell.edu", role = c("aut"), comment = c(ORCID = "0000-0002-6221-1247")), person(given = "Jorge", family = "Guzman", email = "jorge.guzman@columbia.edu", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-0826-8306"))),
   year     = "2022",
   note = "R Package Version 0.1.0",
   organization = "Columbia Business School, Columbia University",
