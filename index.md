@@ -1,4 +1,5 @@
-## Strategic Treatment Effects <img src="logo.png" align="right" height="104" />
+# <img src="logo_wide.png" align="center" />
+## Strategic Treatment Effects
 The goal of STE is to allow a user to estimate and study the Strategic
 Treatment Effect of a strategic choice, as outlined by the paper:
 Guzman, Jorge, Treatment Effects in Strategic Management (September 1,
