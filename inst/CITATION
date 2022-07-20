@@ -1,12 +1,13 @@
-citHeader("To cite STE in publications use:")
+citHeader("Please cite STE in publications as:")
 
 citEntry(
-  entry    = "unpublished",
-  title    = "Treatment Effects in Strategic Management",
-  author   = "Jorge Guzman",
-  year     = 2021,
-  url      = "https://dx.doi.org/10.2139/ssrn.3915606",
-  textVersion = paste(
-    "Guzman, Jorge, Treatment Effects in Strategic Management (September 1, 2021). Available at SSRN: https://ssrn.com/abstract=3915606 or http://dx.doi.org/10.2139/ssrn.3915606"
-  )
+  entry    = "Manual",
+  title    = "STE: Estimate Strategic Treatment Effects",
+  author   = c(as.person("Vansh", "Gupta", "vg224@cornell.edu", role = c("aut"), comment = c(ORCID = "0000-0002-6221-1247")), as.person("Jorge", "Guzman", "jorge.guzman@columbia.edu", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-0826-8306")))
+  year     = "2022",
+  note = "R Package Version 0.1.0",
+  organization = "Columbia Business School, Columbia University",
+  address = "New York, NY, USA",
+  url      = "https://github.com/g-vansh/STE",
+  textVersion = "Guzman, J., & Gupta, V., (2022). STE: Estimate Strategic Treatment Effects. R Package Version 0.1.0. https://github.com/g-vansh/STE"
 )
