@@ -34,12 +34,16 @@ estimate_coherence <- function(y, x, x.no_inter) {
 }
 
 rsq_calc <- function(x, y) {
+    nFolds <- 3
+    set.seed(7)
+    foldid <- sample(rep(1:nFolds, length.out = nrow(x)))
 
     # Running Lasso RGLM.
     lasso_ste <- cv.glmnet(
         x = data.matrix(x),
         y = y,
-        standardize = TRUE
+        standardize = TRUE,
+        foldid = foldid
     )
 
     # Getting the R-squared.

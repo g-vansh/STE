@@ -23,13 +23,17 @@ get_top_ste_determinants <- function(ste, X, teffect) {
     require(dplyr)
     require(glmnet)
     # Setup Variables
+    nFolds <- 3
+    set.seed(7)
+    foldid <- sample(rep(1:nFolds, length.out = nrow(X)))
     ate <- mean(teffect, na.rm = T)
 
     # Run LASSO.
     lasso_ste <- cv.glmnet(
         x = data.matrix(X),
         y = teffect,
-        standardize = TRUE
+        standardize = TRUE,
+        foldid = foldid
     )
 
     # Get Top Features.
