@@ -23,7 +23,7 @@ get_top_ste_determinants <- function(ste, X, teffect) {
     require(dplyr)
     require(glmnet)
     # Setup Variables
-    nFolds <- 3
+    nFolds <- 10
     set.seed(7)
     foldid <- sample(rep(1:nFolds, length.out = nrow(X)))
     ate <- mean(teffect, na.rm = T)

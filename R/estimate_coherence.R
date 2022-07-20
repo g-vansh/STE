@@ -34,7 +34,7 @@ estimate_coherence <- function(y, x, x.no_inter) {
 }
 
 rsq_calc <- function(x, y) {
-    nFolds <- 3
+    nFolds <- 10
     set.seed(7)
     foldid <- sample(rep(1:nFolds, length.out = nrow(x)))
 
