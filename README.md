@@ -1,6 +1,8 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+# <img src="man/figures/logo_wide.jpg" align="center" />
+
 # STE <img src="man/figures/logo.png" align="right" height="104" />
 
 <!-- badges: start -->
