@@ -9,5 +9,5 @@ citEntry(
   organization = "Columbia Business School, Columbia University",
   address = "New York, NY, USA",
   url      = "https://github.com/g-vansh/STE",
-  textVersion = "Guzman, J., & Gupta, V., (2022). STE: Estimate Strategic Treatment Effects. R Package Version 0.1.0. https://github.com/g-vansh/STE"
+  textVersion = "Gupta, V., & Guzman, J.(2022). STE: Estimate Strategic Treatment Effects. R Package Version 0.1.0. https://github.com/g-vansh/STE"
 )
