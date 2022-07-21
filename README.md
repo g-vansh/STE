@@ -57,7 +57,6 @@ A BibTeX entry for LaTeX users is:
   url = {https://github.com/g-vansh/STE},
 }
 ```
-
 ## Example Usage
 
 This is a basic example which shows you how to use the package in one
