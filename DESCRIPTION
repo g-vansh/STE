@@ -2,7 +2,7 @@ Package: STE
 Type: Package
 Title: Estimate and Study the Strategic Treatment Effects
 Version: 0.1.0
-Authors: Jorge Guzman & Vansh Gupta
+Authors: Vansh Gupta & Jorge Guzman
 Authors@R: c(
   person(given = "Vansh", family = "Gupta", email = "vg224@cornell.edu", role = c("aut"), comment = c(ORCID = "0000-0002-6221-1247")),
   person(given = "Jorge", family = "Guzman", email = "jorge.guzman@columbia.edu", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-0826-8306")))
