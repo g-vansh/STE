@@ -41,22 +41,22 @@ This package contains 5 functions:
 ## Citation
 
 Please cite STE in publications as:
-```
-Gupta, V., & Guzman, J. (2022). STE: Estimate Strategic Treatment Effects.
-R Package Version 0.1.0. https://github.com/g-vansh/STE
-```
+
+    Gupta, V., & Guzman, J. (2022). STE: Estimate Strategic Treatment Effects.
+    R Package Version 0.1.0. https://github.com/g-vansh/STE
+
 A BibTeX entry for LaTeX users is:
-```
-@Manual{,
-  title = {STE: Estimate Strategic Treatment Effects},
-  author = {Vansh Gupta and Jorge Guzman},
-  year = {2022},
-  note = {R Package Version 0.1.0},
-  organization = {Columbia Business School, Columbia University},
-  address = {New York, NY, USA},
-  url = {https://github.com/g-vansh/STE},
-}
-```
+
+    @Manual{,
+      title = {STE: Estimate Strategic Treatment Effects},
+      author = {Vansh Gupta and Jorge Guzman},
+      year = {2022},
+      note = {R Package Version 0.1.0},
+      organization = {Columbia Business School, Columbia University},
+      address = {New York, NY, USA},
+      url = {https://github.com/g-vansh/STE},
+    }
+
 ## Example Usage
 
 This is a basic example which shows you how to use the package in one
