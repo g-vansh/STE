@@ -20,7 +20,8 @@ Imports:
     glmnet,
     randomForest,
     stats,
-    stringr
+    stringr,
+    fANCOVA
 Suggests: 
     knitr,
     rmarkdown

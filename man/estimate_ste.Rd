@@ -25,6 +25,7 @@ This function estimates the strategic treatment effect.
 
  \itemize{
    \item{dplyr}
+   \item{fANCOVA}
  }
 }
 

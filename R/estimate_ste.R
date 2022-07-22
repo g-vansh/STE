@@ -4,6 +4,7 @@
 #' @section Dependencies:
 #'  \itemize{
 #'    \item{dplyr}
+#'    \item{fANCOVA}
 #'  }
 #' @param y Outcome variable to be studied.
 #' @param treatment Treatment variable.
@@ -23,28 +24,17 @@
 estimate_ste <- function(y, treatment, propensity, df) {
     require(dplyr)
     require(fANCOVA)
-    require(stats)
     # Setup models and variables.
     df$x <- propensity
     df$y <- y
     df_treated <- df %>% filter(treatment == 1)
     df_untreated <- df %>% filter(treatment == 0)
 
-    ## Find the optimal spans
-    #span_treated = optim(par = c(0.5), calcSSE, method = "SANN", df = df_treated)$par
-    #print(paste0("Span (Treated): ", span_treated))
-    #span_untreated = optim(par = c(0.5), calcSSE, method = "SANN", df = df_untreated)$par
-    #print(paste0("Span (Untreated): ", span_untreated))
-
-    ## Run Local Regressions
-    #model.treated <- loess(y ~ propensity, data = df_treated, span = span_treated)
-    #model.not_treated <- loess(y ~ propensity, data = df_untreated, span = span_untreated)
-
-    model.treated <- loess.as(y = df_treated$y, x = df_treated$x, criterion = "gcv")
-    model.not_treated <- loess.as(y = df_untreated$y, x = df_untreated$x, criterion = "gcv")
+    # Setup models with automatic span selection using the AICC criterion.
+    model.treated <- loess.as(y = df_treated$y, x = df_treated$x)
+    model.not_treated <- loess.as(y = df_untreated$y, x = df_untreated$x)
     print(paste0("Span (Treated): ", model.treated$pars$span))
     print(paste0("Span (Untreated): ", model.not_treated$pars$span))
-
 
     # Calculate predicted values.
     pos_prediction <- predict(model.treated, newdata = df)
@@ -58,28 +48,5 @@ estimate_ste <- function(y, treatment, propensity, df) {
 
     return(df)
 }
-
-# Function that returns the SSE
-calcSSE <- function(x, df){
-
-  loessMod <- try(loess(y ~ propensity, data = df, span = x), silent = T)
-  res <- try(loessMod$residuals, silent = T)
-
-  if(class(res) != "try-error"){
-
-    if((sum(res, na.rm = T) > 0)){
-      sse <- sum(res^2)
-    } else {
-      sse <- 99999
-    }
-
-  }else{
-    sse <- 99999
-  }
-
-  return(sse)
-}
-
-
 
 
