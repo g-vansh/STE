@@ -40,7 +40,16 @@ estimate_ste <- function(y, treatment, propensity, df) {
     #model.not_treated <- loess(y ~ propensity, data = df_untreated, span = span_untreated)
 
     model.treated <- loess.as(y = df_treated$y, x = df_treated$propensity, plot = T)
+    View(model.treated)
     model.not_treated <- loess.as(y = df_untreated$y, x = df_untreated$propensity, plot = T)
+    View(model.not_treated)
+
+    # Run Local Regressions
+    model.treated_n <- loess(y ~ propensity, data = df_treated, span = span_treated)
+    model.not_treated_n <- loess(y ~ propensity, data = df_untreated, span = span_untreated)
+    View(model.not_treated_n)
+    View(model.treated_n)
+
 
     # Calculate predicted values.
     pos_prediction <- predict(model.treated, newdata = df)
