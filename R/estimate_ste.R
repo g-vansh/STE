@@ -40,11 +40,8 @@ estimate_ste <- function(y, treatment, propensity, df) {
     #model.treated <- loess(y ~ propensity, data = df_treated, span = span_treated)
     #model.not_treated <- loess(y ~ propensity, data = df_untreated, span = span_untreated)
 
-    model.treated <- loess.as(y = df_treated$y, x = df_treated$x, plot = T)
-    model.not_treated <- loess.as(y = df_untreated$y, x = df_untreated$x, plot = T)
-    View(model.not_treated)
-    View(model.treated)
-
+    model.treated <- loess.as(y = df_treated$y, x = df_treated$x, criterion = "aicc")
+    model.not_treated <- loess.as(y = df_untreated$y, x = df_untreated$x, criterion = "aicc")
     print(paste0("Span (Treated): ", model.treated$pars$span))
     print(paste0("Span (Untreated): ", model.not_treated$pars$span))
 
