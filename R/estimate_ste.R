@@ -22,21 +22,25 @@
 #' @export
 estimate_ste <- function(y, treatment, propensity, df) {
     require(dplyr)
+    require(fANCOVA)
     # Setup models and variables.
     df$propensity <- propensity
     df$y <- y
     df_treated <- df %>% filter(treatment == 1)
     df_untreated <- df %>% filter(treatment == 0)
 
-    # Find the optimal spans
-    span_treated = optim(par = c(0.5), calcSSE, method = "SANN", df = df_treated)$par
-    print(paste0("Span (Treated): ", span_treated))
-    span_untreated = optim(par = c(0.5), calcSSE, method = "SANN", df = df_untreated)$par
-    print(paste0("Span (Untreated): ", span_untreated))
+    ## Find the optimal spans
+    #span_treated = optim(par = c(0.5), calcSSE, method = "SANN", df = df_treated)$par
+    #print(paste0("Span (Treated): ", span_treated))
+    #span_untreated = optim(par = c(0.5), calcSSE, method = "SANN", df = df_untreated)$par
+    #print(paste0("Span (Untreated): ", span_untreated))
 
-    # Run Local Regressions
-    model.treated <- loess(y ~ propensity, data = df_treated, span = span_treated)
-    model.not_treated <- loess(y ~ propensity, data = df_untreated, span = span_untreated)
+    ## Run Local Regressions
+    #model.treated <- loess(y ~ propensity, data = df_treated, span = span_treated)
+    #model.not_treated <- loess(y ~ propensity, data = df_untreated, span = span_untreated)
+
+    model.treated <- loess.as(y = df_treated$y, x = df_treated$propensity, plot = T)
+    model.untreated <- loess.as(y = df_untreated$y, x = df_untreated$propensity, plot = T)
 
     # Calculate predicted values.
     pos_prediction <- predict(model.treated, newdata = df)
