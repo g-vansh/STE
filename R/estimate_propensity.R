@@ -31,7 +31,7 @@ estimate_propensity <- function(treatment, X){
       y = as.factor(treatment),
       type = "regression",
       stepFactor = 1,
-      improve = 0.025,
+      improve = 0.05,
       ntreeTry = 100)
 
     mtry_optimal <- as.integer(mtry_obj[which.min(mtry_obj[, 2])])
