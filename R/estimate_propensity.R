@@ -25,6 +25,13 @@ estimate_propensity <- function(treatment, X){
     treatment <- df$temp_treatment
     df <- subset(df, select = -c(rown, temp_treatment))
     vars <- colnames(X)
+    mtry_obj <- tuneRF(
+      x = df[, vars],
+      y = as.factor(treatment),
+      type = "regression")
+
+    save(mtry_obj, file = "mtry_opt.Rdata")
+    mtry_optimal <- as.integer(mtry_obj[which.min(mtry_obj[, 2])])
 
     # Conduct Out-Of-Fold (OOF) predictions for 10 folds.
     for (i in 0:9) {
@@ -37,8 +44,7 @@ estimate_propensity <- function(treatment, X){
           y = as.factor(treatment[train_sample]),
           type = "regression",
           importance = TRUE,
-          nodesize = 25,
-          maxdepth = 9
+          mtry = mtry_optimal
         )
 
         # Make Predictions For Fold i
