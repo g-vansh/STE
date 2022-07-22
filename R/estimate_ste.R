@@ -55,10 +55,12 @@ estimate_ste <- function(y, treatment, propensity, df) {
 calcSSE <- function(x, df){
 
   loessMod <- try(loess(y ~ propensity, data = df, span = x), silent = F)
+  print("Loess DOne")
   print(summary(loessMod))
   View(loessMod)
   res <- try(loessMod$residuals, silent = F)
   print(res)
+  print("res calculated")
 
   if(class(res) != "try-error"){
     if((sum(res, na.rm = T) > 0)){
