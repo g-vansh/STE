@@ -29,9 +29,9 @@ estimate_ste <- function(y, treatment, propensity, df) {
     df_untreated <- df %>% filter(treatment == 0)
 
     # Find the optimal spans
-    span_treated = optim(par = c(0.5), calcSSE, method = "SANN", df = df_treated)
+    span_treated = optim(par = c(0.5), calcSSE, method = "SANN", df = df_treated)$par
     print(paste0("Span (Treated): ", span_treated))
-    span_untreated = optim(par = c(0.5), calcSSE, method = "SANN", df = df_untreated)
+    span_untreated = optim(par = c(0.5), calcSSE, method = "SANN", df = df_untreated)$par
     print(paste0("Span (Untreated): ", span_untreated))
 
     # Run Local Regressions
