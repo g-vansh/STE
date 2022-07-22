@@ -30,9 +30,8 @@ estimate_propensity <- function(treatment, X){
       x = df[, vars],
       y = as.factor(treatment),
       type = "regression",
-      stepFactor = 1,
-      improve = 0.05,
-      ntreeTry = 100)
+      stepFactor = 1.5,
+      improve = 0.02)
 
     mtry_optimal <- as.integer(mtry_obj[which.min(mtry_obj[, 2])])
     print(paste0("Using optimal mtry hyper-parameter: ", mtry_optimal))
