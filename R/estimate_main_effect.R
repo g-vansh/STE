@@ -9,7 +9,7 @@
 #'    \item{dplyr}
 #'  }
 #'@param treatment_var String containing the name of treatment variable to be studied.
-#'@param y_var String containing the name of the outcome variable to be studies.
+#'@param y_var String containing the name of the outcome variable to be studied.
 #'@param X X-variables.
 #'@param data_df The complete dataframe.
 #'@returns The regression output from the fixed-effects OLS regression.

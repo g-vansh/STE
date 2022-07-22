@@ -7,7 +7,7 @@
 estimate_main_effect(y_var, treatment_var, X, data_df)
 }
 \arguments{
-\item{y_var}{String containing the name of the outcome variable to be studies.}
+\item{y_var}{String containing the name of the outcome variable to be studied.}
 
 \item{treatment_var}{String containing the name of treatment variable to be studied.}
 
