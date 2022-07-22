@@ -25,7 +25,7 @@ estimate_ste <- function(y, treatment, propensity, df) {
     require(fANCOVA)
     require(stats)
     # Setup models and variables.
-    df$propensity <- propensity
+    df$x <- propensity
     df$y <- y
     df_treated <- df %>% filter(treatment == 1)
     df_untreated <- df %>% filter(treatment == 0)
@@ -41,15 +41,12 @@ estimate_ste <- function(y, treatment, propensity, df) {
     #model.not_treated <- loess(y ~ propensity, data = df_untreated, span = span_untreated)
 
     model.treated <- loess.as(y = df_treated$y, x = df_treated$propensity, plot = T)
-    View(model.treated)
     model.not_treated <- loess.as(y = df_untreated$y, x = df_untreated$propensity, plot = T)
     View(model.not_treated)
+    View(model.treated)
 
-    # Run Local Regressions
-    model.treated_n <- loess(y ~ propensity, data = df_treated, span = 0.1)
-    model.not_treated_n <- loess(y ~ propensity, data = df_untreated, span = 1)
-    View(model.not_treated_n)
-    View(model.treated_n)
+    print(paste0("Span (Treated): ", model.treated$pars$span))
+    print(paste0("Span (Untreated): ", model.not_treated$pars$span))
 
 
     # Calculate predicted values.
