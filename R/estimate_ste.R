@@ -45,8 +45,8 @@ estimate_ste <- function(y, treatment, propensity, df) {
     View(model.not_treated)
 
     # Run Local Regressions
-    model.treated_n <- loess(y ~ propensity, data = df_treated, span = span_treated)
-    model.not_treated_n <- loess(y ~ propensity, data = df_untreated, span = span_untreated)
+    model.treated_n <- loess(y ~ propensity, data = df_treated, span = 0.1)
+    model.not_treated_n <- loess(y ~ propensity, data = df_untreated, span = 1)
     View(model.not_treated_n)
     View(model.treated_n)
 
