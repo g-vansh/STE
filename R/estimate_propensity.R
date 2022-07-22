@@ -25,13 +25,17 @@ estimate_propensity <- function(treatment, X){
     treatment <- df$temp_treatment
     df <- subset(df, select = -c(rown, temp_treatment))
     vars <- colnames(X)
+    set.seed(7)
     mtry_obj <- tuneRF(
       x = df[, vars],
       y = as.factor(treatment),
-      type = "regression")
+      type = "regression",
+      stepFactor = 1,
+      improve = 0.025,
+      ntreeTry = 100)
 
-    save(mtry_obj, file = "mtry_opt.Rdata")
     mtry_optimal <- as.integer(mtry_obj[which.min(mtry_obj[, 2])])
+    print(paste0("Using optimal mtry hyper-parameter: ", mtry_optimal))
 
     # Conduct Out-Of-Fold (OOF) predictions for 10 folds.
     for (i in 0:9) {
