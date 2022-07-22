@@ -4,14 +4,7 @@
 \alias{estimate_ste}
 \title{Estimate the Strategic Treatment Effect.}
 \usage{
-estimate_ste(
-  y,
-  treatment,
-  propensity,
-  df,
-  span_treated = 0.75,
-  span_untreated = 0.75
-)
+estimate_ste(y, treatment, propensity, df)
 }
 \arguments{
 \item{y}{Outcome variable to be studied.}
@@ -21,10 +14,6 @@ estimate_ste(
 \item{propensity}{Propensity score generated earlier.}
 
 \item{df}{The complete dataset.}
-
-\item{span_treated}{Optional span value for the treated model. Default is 0.75, which is the loess default.}
-
-\item{span_untreated}{Optional span value for the untreated model. Default is 0.75, which is the loess default.}
 }
 \value{
 df The same as input dataframe with the added column of the strategic treatment effect.
