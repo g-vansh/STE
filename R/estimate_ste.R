@@ -52,8 +52,8 @@ estimate_ste <- function(y, treatment, propensity, df) {
 
 
     # Calculate predicted values.
-    pos_prediction <- predict(model.treated, newdata = df)
-    neg_prediction <- predict(model.not_treated, newdata = df)
+    pos_prediction <- predict.loess(model.treated, newdata = df)
+    neg_prediction <- predict.loess(model.not_treated, newdata = df)
 
     # Calculate treatment effects.
     df$teffect <- pos_prediction - neg_prediction
