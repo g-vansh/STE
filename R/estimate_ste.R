@@ -23,6 +23,7 @@
 estimate_ste <- function(y, treatment, propensity, df) {
     require(dplyr)
     require(fANCOVA)
+    require(stats)
     # Setup models and variables.
     df$propensity <- propensity
     df$y <- y
