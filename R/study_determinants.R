@@ -12,14 +12,13 @@
 #' @returns ste_features A dataframe containing the STE features.
 #' @examples
 #' get_top_ste_determinants(
-#'    ste = df$ste,
 #'    X = df[, ml_variables],
 #'    teffect = df$teffect
 #' )
 #' @keywords
 #'  STE Determinants
 #' @export
-get_top_ste_determinants <- function(ste, X, teffect) {
+get_top_ste_determinants <- function(X, teffect) {
     require(dplyr)
     require(glmnet)
     # Setup Variables
