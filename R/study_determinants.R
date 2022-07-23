@@ -22,6 +22,8 @@ get_top_ste_determinants <- function(X, teffect) {
     require(dplyr)
     require(glmnet)
     # Setup Variables
+    #TODO: SHUFFLE AND USE STE TO FILTER HERE
+    #ISSUE IS WITH DATA STE
     nFolds <- 10
     set.seed(7)
     foldid <- sample(rep(1:nFolds, length.out = nrow(X)))
