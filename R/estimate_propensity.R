@@ -21,7 +21,7 @@ estimate_propensity <- function(treatment, X){
     require(randomForest)
     require(dplyr)
     print("Training the Random Forest Model.")
-    df <- df_pre_process(X, treatment, 3)
+    df <- df_pre_process(X, treatment, 10)
     treatment <- df$temp_treatment
     df <- subset(df, select = -c(rown, temp_treatment))
     vars <- colnames(X)
@@ -29,14 +29,13 @@ estimate_propensity <- function(treatment, X){
     mtry_obj <- tuneRF(
       x = df[, vars],
       y = as.factor(treatment),
-      type = "regression",
-      ntreeTry = 100)
+      type = "regression")
 
     mtry_optimal <- as.integer(mtry_obj[which.min(mtry_obj[, 2])])
     print(paste0("Using optimal mtry hyper-parameter: ", mtry_optimal))
 
     # Conduct Out-Of-Fold (OOF) predictions for 10 folds.
-    for (i in 0:2) {
+    for (i in 0:9) {
         print(paste0("In Fold: ", i+1))
         train_sample <- df$fold != i
         pred_sample <- df$fold == i
