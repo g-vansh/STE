@@ -20,17 +20,21 @@
 estimate_propensity <- function(treatment, X){
     require(randomForest)
     require(dplyr)
+
+    # Setup Variables
     print("Training the Random Forest Model.")
     df <- df_pre_process(X, treatment, 10)
     treatment <- df$temp_treatment
     df <- subset(df, select = -c(rown, temp_treatment))
     vars <- colnames(X)
     set.seed(7)
+
+    # Tune Model
+    print("Finding the optimal mtry parameter for the Random Forest model.")
     mtry_obj <- tuneRF(
       x = df[, vars],
       y = as.factor(treatment),
       type = "regression")
-
     mtry_optimal <- as.integer(mtry_obj[which.min(mtry_obj[, 2])])
     print(paste0("Using optimal mtry hyper-parameter: ", mtry_optimal))
 

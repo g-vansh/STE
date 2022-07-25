@@ -24,6 +24,7 @@
 estimate_ste <- function(y, treatment, propensity, df) {
     require(dplyr)
     require(fANCOVA)
+
     # Setup models and variables.
     df$x <- propensity
     df$y <- y
@@ -33,8 +34,6 @@ estimate_ste <- function(y, treatment, propensity, df) {
     # Setup models with automatic span selection using the AICC criterion.
     model.treated <- loess.as(y = df_treated$y, x = df_treated$x)
     model.not_treated <- loess.as(y = df_untreated$y, x = df_untreated$x)
-    print(paste0("Span (Treated): ", model.treated$pars$span))
-    print(paste0("Span (Untreated): ", model.not_treated$pars$span))
 
     # Calculate predicted values.
     pos_prediction <- predict(model.treated, newdata = df)

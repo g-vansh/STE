@@ -4,11 +4,9 @@
 \alias{get_top_ste_determinants}
 \title{Study Determinants of the STE.}
 \usage{
-get_top_ste_determinants(ste, X, teffect)
+get_top_ste_determinants(X, teffect)
 }
 \arguments{
-\item{ste}{Strategic Treatment Effect calculated earlier.}
-
 \item{X}{x-variables for the LASSO.}
 
 \item{teffect}{Treatment effect of the model.}
@@ -29,7 +27,6 @@ This function studies the determinants of the strategic treatment effect.
 
 \examples{
 get_top_ste_determinants(
-   ste = df$ste,
    X = df[, ml_variables],
    teffect = df$teffect
 )

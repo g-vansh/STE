@@ -6,7 +6,6 @@
 #'    \item{glmnet}
 #'    \item{dplyr}
 #'  }
-#' @param ste Strategic Treatment Effect calculated earlier.
 #' @param X x-variables for the LASSO.
 #' @param teffect Treatment effect of the model.
 #' @returns ste_features A dataframe containing the STE features.
@@ -21,11 +20,11 @@
 get_top_ste_determinants <- function(X, teffect) {
     require(dplyr)
     require(glmnet)
+
     # Setup Variables
-    #TODO: SHUFFLE AND USE STE TO FILTER HERE
-    #ISSUE IS WITH DATA STE
     nFolds <- 10
     set.seed(7)
+    X <- X[sample(1:nrow(X)), ] %>% filter(!is.na(teffect))
     foldid <- sample(rep(1:nFolds, length.out = nrow(X)))
     ate <- mean(teffect, na.rm = T)
 
@@ -37,7 +36,7 @@ get_top_ste_determinants <- function(X, teffect) {
         foldid = foldid
     )
 
-    # Get Top Features.
+    # Get Features.
     coefs <- coef(lasso_ste, s = lasso_ste$lambda.1se)
     lasso_ste.selected_vars <- data.frame(cbind(row.names(coefs)[coefs[, 1] != 0], coefs[coefs[, 1] != 0]))
 

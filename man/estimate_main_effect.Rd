@@ -16,7 +16,7 @@ estimate_main_effect(y_var, treatment_var, X, data_df)
 \item{data_df}{The complete dataframe.}
 }
 \value{
-The regression output from the fixed-effects OLS regression.
+The feols regression object from the fixed-effects OLS regression.
 }
 \description{
 This function estimates the main effect of the treatment.
