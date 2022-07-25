@@ -1,5 +1,6 @@
 # <img src="logo_wide_updated.jpg" align="center" />
 ## Strategic Treatment Effects
+
 The goal of STE is to allow a user to estimate and study the Strategic
 Treatment Effect of a strategic choice, as outlined by the paper:
 Guzman, Jorge, Treatment Effects in Strategic Management (September 1,
@@ -33,24 +34,23 @@ This package contains 5 functions:
 ## Citation
 
 Please cite STE in publications as:
-```
-  Guzman, J., & Gupta, V., (2022). STE: Estimate Strategic Treatment Effects. R
-  Package Version 0.1.0. https://github.com/g-vansh/STE
-```
-A BibTeX entry for LaTeX users is:
-```
-  @Manual{,
-    title = {STE: Estimate Strategic Treatment Effects},
-    author = {Vansh Gupta and Jorge Guzman},
-    year = {2022},
-    note = {R Package Version 0.1.0},
-    organization = {Columbia Business School, Columbia University},
-    address = {New York, NY, USA},
-    url = {https://github.com/g-vansh/STE},
-  }
-```
 
-## Example
+    Gupta, V., & Guzman, J. (2022). STE: Estimate Strategic Treatment Effects.
+    R Package Version 0.1.0. https://github.com/g-vansh/STE
+
+A BibTeX entry for LaTeX users is:
+
+    @Manual{,
+      title = {STE: Estimate Strategic Treatment Effects},
+      author = {Vansh Gupta and Jorge Guzman},
+      year = {2022},
+      note = {R Package Version 0.1.0},
+      organization = {Columbia Business School, Columbia University},
+      address = {New York, NY, USA},
+      url = {https://github.com/g-vansh/STE},
+    }
+
+## Example Usage
 
 This is a basic example which shows you how to use the package in one
 scenario:
@@ -85,17 +85,16 @@ cb_startups <- estimate_ste(
     df = cb_startups
 )
 
+# Study the determinants of STE.
+ste_features <- STE::get_top_ste_determinants(
+    X = cb_startups[, ml_vars],
+    teffect = cb_startups$teffect
+    )
+View(ste_features)
+
 # Remove NA values for analysis. 
 cb_startups.clean <- cb_startups %>%
     filter(!is.na(ste))
-
-# Study the determinants of STE.
-ste_features <- STE::get_top_ste_determinants(
-    ste = cb_startups.clean$ste,
-    X = cb_startups.clean[, ml_vars],
-    teffect = cb_startups.clean$teffect
-    )
-View(ste_features)
 
 # Estimate the coherence value.
 ml_vars.no_inter <- ml_vars[grep("^[^X]",ml_vars)]
