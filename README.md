@@ -92,17 +92,16 @@ cb_startups <- estimate_ste(
     df = cb_startups
 )
 
+# Study the determinants of STE.
+ste_features <- STE::get_top_ste_determinants(
+    X = cb_startups[, ml_vars],
+    teffect = cb_startups$teffect
+    )
+View(ste_features)
+
 # Remove NA values for analysis. 
 cb_startups.clean <- cb_startups %>%
     filter(!is.na(ste))
-
-# Study the determinants of STE.
-ste_features <- STE::get_top_ste_determinants(
-    ste = cb_startups.clean$ste,
-    X = cb_startups.clean[, ml_vars],
-    teffect = cb_startups.clean$teffect
-    )
-View(ste_features)
 
 # Estimate the coherence value.
 ml_vars.no_inter <- ml_vars[grep("^[^X]",ml_vars)]
