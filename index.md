@@ -28,7 +28,7 @@ This package contains 5 functions:
 -   `STE::estimate_main_effect(y_var, treatment_var, X, data_df)`
 -   `STE::estimate_propensity(treatment, X)`
 -   `STE::estimate_ste(y, treatment, propensity, df)`
--   `STE::get_top_ste_determinants(ste, X, teffect)`
+-   `STE::get_top_ste_determinants(X, teffect)`
 -   `STE::estimate_coherence(y, x, x.no_inter)`
 
 ## Citation
