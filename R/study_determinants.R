@@ -24,7 +24,10 @@ get_top_ste_determinants <- function(X, teffect) {
     # Setup Variables
     nFolds <- 10
     set.seed(7)
-    X <- X[sample(1:nrow(X)), ] %>% filter(!is.na(teffect))
+    X$temp_teffect <- teffect
+    X <- X[sample(1:nrow(X)), ] %>% filter(!is.na(temp_teffect))
+    teffect <- X$temp_teffect
+    X <- subset(X, select = -c(temp_teffect))
     foldid <- sample(rep(1:nFolds, length.out = nrow(X)))
     ate <- mean(teffect, na.rm = T)
 
