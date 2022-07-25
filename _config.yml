@@ -10,3 +10,5 @@ social_links:
   linkedin: vansh-g
 plugins:
  - jekyll-seo-tag
+github:
+  manual_url: https://github.com/g-vansh/STE/raw/main/inst/STE_0.1.0.pdf
