@@ -34,7 +34,8 @@ estimate_propensity <- function(treatment, X){
     mtry_obj <- tuneRF(
       x = df[, vars],
       y = as.factor(treatment),
-      type = "regression")
+      type = "regression",
+      plot = FALSE)
     mtry_optimal <- as.integer(mtry_obj[which.min(mtry_obj[, 2])])
     print(paste0("Using optimal mtry hyper-parameter: ", mtry_optimal))
 
